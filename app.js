@@ -6,9 +6,16 @@ async function fetchData() {
   try {
     const response = await fetch(API_ENDPOINT);
 
+    if(!response.ok){
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
     const data = await response.json();
 
     dataContainer.innerHTML = `<strong> Data Loaded: </strong> ${data.message}`;
-  } catch (error) {}
+  } catch (error) {
+    dataContainer.innerHTML = `<span class = "error"> Failed to load data. </span>`;
+    console.error('Fetch Error:', error);
+  }
 }
 loadBtn.addEventListener("click,", fetchData);
