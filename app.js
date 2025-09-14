@@ -18,4 +18,4 @@ async function fetchData() {
     console.error('Fetch Error:', error);
   }
 }
-loadBtn.addEventListener("click,", fetchData);
+loadBtn.addEventListener("click", fetchData);
